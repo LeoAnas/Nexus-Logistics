@@ -1,0 +1,6 @@
+1-uv init --- uv venv ---
+2- .venv/scripts/activate
+3-uv add fastapi uvicorn[standard] pydantic pydantic-settings  sqlalchemy alembic   psycopg2-binary pymongo motor aio_pika pyjwt passlib[bcrypt] email-validator python-multipart
+
+
+4-   
