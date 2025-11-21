@@ -3,4 +3,10 @@
 3-uv add fastapi uvicorn[standard] pydantic pydantic-settings  sqlalchemy alembic   psycopg2-binary pymongo motor aio_pika pyjwt passlib[bcrypt] email-validator python-multipart
 
 
-4-   
+4-  uv run alembic init -t async migrations
+5- # Overwrite sqlalchemy.url with our Pydantic setting
+config.set_main_option("sqlalchemy.url", settings.SQLALCHEMY_DATABASE_URI)
+
+# Set metadata
+target_metadata = Base.metadata
+6- 
