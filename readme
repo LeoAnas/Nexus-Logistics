@@ -9,4 +9,4 @@ config.set_main_option("sqlalchemy.url", settings.SQLALCHEMY_DATABASE_URI)
 
 # Set metadata
 target_metadata = Base.metadata
-6- 
+6- alembic upgrade head
