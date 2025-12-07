@@ -5,7 +5,7 @@ from sqlalchemy import func,UUID,DateTime,BOOLEAN
 
 class Base(DeclarativeBase):
     """
-    BASE class for all sql_alchemy models 
+    BASE class for all SQLAlchemy models 
 
     Args:
         DeclarativeBase (_type_): _description_

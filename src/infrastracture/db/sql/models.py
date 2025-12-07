@@ -3,10 +3,14 @@ from sqlalchemy.orm import mapped_column,Mapped,relationship
 from src.infrastracture.db.sql.base import Base,TimestampMixin,SoftDeleteMixin,UUIDMixin
 import uuid
 
+# a boilerPlate class that contain all those in one
+class MappedModel(Base, UUIDMixin, TimestampMixin, SoftDeleteMixin):
+    __abstract__ = True
+    pass
 
 
 # 1. Tenant (The Organization)
-class Tenant(Base,UUIDMixin,SoftDeleteMixin,TimestampMixin):
+class Tenant(MappedModel):
     __tablename__="tenants"
     
     name:Mapped[str]=mapped_column(
@@ -25,7 +29,7 @@ class Tenant(Base,UUIDMixin,SoftDeleteMixin,TimestampMixin):
     devices=relationship("Device",back_populates="tenant",cascade="all, delete-orphan")
     
 # 2. User (The Staff)
-class User(Base,UUIDMixin,TimestampMixin,SoftDeleteMixin):
+class User(MappedModel):
     __tablename__="users"
     
     email:Mapped[str]=mapped_column(
@@ -58,7 +62,7 @@ class User(Base,UUIDMixin,TimestampMixin,SoftDeleteMixin):
     tenant=relationship("Tenant",back_populates="users")
     
 # 3. Device (The Hardware)
-class Device(UUIDMixin,Base,SoftDeleteMixin,TimestampMixin):
+class Device(MappedModel):
     __tablename__="devices"
     
     name:Mapped[str]=mapped_column(
