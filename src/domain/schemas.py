@@ -34,7 +34,7 @@ class UserBase(BaseSchema):
 
 
 class UserCreate(UserBase):
-    hashed_password: str = Field(..., min_length=8, max_length=50)
+    password: str = Field(..., min_length=8, max_length=50)
     tenant_id: UUID
 
 

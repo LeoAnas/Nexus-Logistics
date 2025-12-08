@@ -6,7 +6,7 @@ import uvicorn
 
 
 from src.presentation.api.v1 import tenants
-
+from src.presentation.api.v1 import users
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -25,6 +25,7 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json",
 )
 app.include_router(tenants.router, prefix="/api/v1/tenants", tags=["Tenants"])
+app.include_router(users.router,prefix="/api/v1/users",tags=["Users"])
 
 
 @app.get("/health")
